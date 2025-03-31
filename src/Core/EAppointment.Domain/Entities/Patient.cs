@@ -1,6 +1,6 @@
 ﻿namespace EAppointment.Domain.Entities
 {
-    public class Patient
+    public sealed class Patient
     {
         public Patient() => Id = Guid.NewGuid();
 

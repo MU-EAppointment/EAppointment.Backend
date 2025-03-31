@@ -2,7 +2,7 @@
 
 namespace EAppointment.Domain.Enums
 {
-    public class DepartmentEnum : SmartEnum<DepartmentEnum>
+    public sealed class DepartmentEnum : SmartEnum<DepartmentEnum>
     {
         public static readonly DepartmentEnum Default = new("Default", 0);
         public static readonly DepartmentEnum Acil = new("Acil", 1);
