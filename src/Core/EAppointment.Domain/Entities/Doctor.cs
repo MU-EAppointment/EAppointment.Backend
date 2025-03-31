@@ -1,12 +1,10 @@
-﻿using EAppointment.Domain.Enums;
+﻿using EAppointment.Domain.Entities.Commons;
+using EAppointment.Domain.Enums;
 
 namespace EAppointment.Domain.Entities
 {
-    public sealed class Doctor
+    public sealed class Doctor : BaseEntity
     {
-        public Doctor() => Id = Guid.NewGuid();
-
-        public Guid Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DepartmentEnum Department { get; set; } = DepartmentEnum.Default;

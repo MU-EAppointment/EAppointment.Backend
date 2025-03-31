@@ -1,10 +1,9 @@
-﻿namespace EAppointment.Domain.Entities
-{
-    public sealed class Appointment
-    {
-        public Appointment() => Id = Guid.NewGuid();
+﻿using EAppointment.Domain.Entities.Commons;
 
-        public Guid Id { get; set; }
+namespace EAppointment.Domain.Entities
+{
+    public sealed class Appointment : BaseEntity
+    {
         public Guid DoctorId { get; set; }
         public Guid PatientId { get; set; }
         public DateTime StartDate { get; set; }
