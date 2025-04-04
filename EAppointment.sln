@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1C9C8268-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAppointment.Domain", "src\Core\EAppointment.Domain\EAppointment.Domain.csproj", "{E7E4035D-E248-4E64-BE21-950F52A9F1FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAppointment.Application", "src\Core\EAppointment.Application\EAppointment.Application.csproj", "{BD411C20-811E-4D92-9A91-1650AA968D28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{E7E4035D-E248-4E64-BE21-950F52A9F1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7E4035D-E248-4E64-BE21-950F52A9F1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7E4035D-E248-4E64-BE21-950F52A9F1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD411C20-811E-4D92-9A91-1650AA968D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD411C20-811E-4D92-9A91-1650AA968D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD411C20-811E-4D92-9A91-1650AA968D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD411C20-811E-4D92-9A91-1650AA968D28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +32,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1C9C8268-FE55-4904-ABE1-A515979E51A0} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E7E4035D-E248-4E64-BE21-950F52A9F1FD} = {1C9C8268-FE55-4904-ABE1-A515979E51A0}
+		{BD411C20-811E-4D92-9A91-1650AA968D28} = {1C9C8268-FE55-4904-ABE1-A515979E51A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D80DED9A-B554-4A08-8D9D-BB120B37B41C}
