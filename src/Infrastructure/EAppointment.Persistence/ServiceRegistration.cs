@@ -1,5 +1,9 @@
-﻿using EAppointment.Domain.Entities;
+﻿using EAppointment.Application.Abstractions.Repositories;
+using EAppointment.Domain.Entities;
 using EAppointment.Persistence.Contexts;
+using EAppointment.Persistence.Repositories.Appointments;
+using EAppointment.Persistence.Repositories.Doctors;
+using EAppointment.Persistence.Repositories.Patients;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +12,7 @@ namespace EAppointment.Persistence
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration _configuration) 
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration _configuration)
         {
             services.AddDbContext<EAppointmentDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("SQL")));
             services.AddIdentity<User, Role>(action =>
@@ -19,6 +23,14 @@ namespace EAppointment.Persistence
                 action.Password.RequireNonAlphanumeric = false;
                 action.Password.RequireDigit = false;
             }).AddEntityFrameworkStores<EAppointmentDbContext>();
+
+            services.AddScoped<IQueryRepository<Doctor>, DoctorQueryRepository>();
+            services.AddScoped<ICommandRepository<Doctor>, DoctorCommandRepository>();
+            services.AddScoped<IQueryRepository<Patient>, PatientQueryRepository>();
+            services.AddScoped<ICommandRepository<Patient>, PatientCommandRepository>();
+            services.AddScoped<IQueryRepository<Appointment>, AppointmentQueryRepository>();
+            services.AddScoped<ICommandRepository<Appointment>, AppointmentCommandRepository>();
+
             return services;
         }
     }
