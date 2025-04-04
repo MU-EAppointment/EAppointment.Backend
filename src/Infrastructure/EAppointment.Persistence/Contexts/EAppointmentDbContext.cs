@@ -1,4 +1,5 @@
 ﻿using EAppointment.Domain.Entities;
+using EAppointment.Domain.Entities.Commons;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,23 @@ namespace EAppointment.Persistence.Contexts
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(builder);
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            IEnumerable<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<BaseEntity>>? datas = ChangeTracker.Entries<BaseEntity>();
+            Parallel.ForEach(datas, data =>
+            {
+                if(data.State == EntityState.Added)
+                {
+                    data.Entity.CreatedAt = DateTime.UtcNow;
+                    data.Entity.IsActive = true;
+                }
+                else if(data.State == EntityState.Modified)
+                    data.Entity.UpdatedAt = DateTime.UtcNow;
+            });
+
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }
