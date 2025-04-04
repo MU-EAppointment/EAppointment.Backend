@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EAppointment.Application.Features.Auths.Rules;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EAppointment.Application
 {
@@ -7,6 +8,7 @@ namespace EAppointment.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services) 
         {
             services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
+            services.AddScoped<AuthRules>();
             return services;
         }
     }

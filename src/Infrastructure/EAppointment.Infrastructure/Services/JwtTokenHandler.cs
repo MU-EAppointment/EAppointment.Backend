@@ -10,7 +10,7 @@ namespace EAppointment.Infrastructure.Services
 {
     internal sealed class JwtTokenHandler(IConfiguration _configuration) : IJwtTokenHandler
     {
-        public string CreateTokenAsync(User user)
+        public string CreateToken(User user)
         {
             Claim[]? claims =
             [

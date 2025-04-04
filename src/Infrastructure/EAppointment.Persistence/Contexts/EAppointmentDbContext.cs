@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace EAppointment.Persistence.Contexts
 {
-    internal sealed class EAppointmentDbContext(DbContextOptions options) : IdentityDbContext<User, Role, Guid>(options)
+    internal sealed class EAppointmentDbContext(DbContextOptions<EAppointmentDbContext> options) : IdentityDbContext<User, Role, Guid, IdentityUserClaim<Guid>, UserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>(options)
     {
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -29,12 +29,12 @@ namespace EAppointment.Persistence.Contexts
             IEnumerable<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<BaseEntity>>? datas = ChangeTracker.Entries<BaseEntity>();
             Parallel.ForEach(datas, data =>
             {
-                if(data.State == EntityState.Added)
+                if (data.State == EntityState.Added)
                 {
                     data.Entity.CreatedAt = DateTime.UtcNow;
                     data.Entity.IsActive = true;
                 }
-                else if(data.State == EntityState.Modified)
+                else if (data.State == EntityState.Modified)
                     data.Entity.UpdatedAt = DateTime.UtcNow;
             });
 
