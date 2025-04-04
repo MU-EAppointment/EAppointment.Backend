@@ -11,12 +11,18 @@ builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+policy.WithOrigins("", "").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+));
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
