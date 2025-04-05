@@ -1,6 +1,11 @@
 @EAppointment.WebAPI_HostAddress = http://localhost:5014
 
-GET {{EAppointment.WebAPI_HostAddress}}/weatherforecast/
+POST {{EAppointment.WebAPI_HostAddress}}/api/auths/login
 Accept: application/json
+Content-Type: application/json
 
+{
+  "UsernameOrEmail":"admin",
+  "Password":"1"
+}
 ###

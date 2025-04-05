@@ -1,6 +1,9 @@
 using EAppointment.Application;
+using EAppointment.Domain.Entities;
 using EAppointment.Infrastructure;
 using EAppointment.Persistence;
+using EAppointment.WebAPI.SeedData;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+SeedAdmin.CreateUserAsync(app).Wait();
 
 app.Run();
