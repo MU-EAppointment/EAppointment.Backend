@@ -14,7 +14,7 @@ namespace EAppointment.Application.Features.Auths.Commands.Login
         {
             User? user = await _authRule.UserNotFound(request.UsernameOrEmail, cancellationToken);
             await _authRule.IsPasswordCorrect(user, request.Password);
-            return Result<LoginUserDTO>.Success(new(await _jwtTokenHandler.CreateTokenAsync(user)));
+            return Result<LoginUserDTO>.Success(new(_jwtTokenHandler.CreateToken(user)));
         }
     }
 }
