@@ -1,9 +1,7 @@
 using EAppointment.Application;
-using EAppointment.Domain.Entities;
 using EAppointment.Infrastructure;
 using EAppointment.Persistence;
 using EAppointment.WebAPI.SeedData;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +13,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
-policy.WithOrigins("", "").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
 ));
 
 var app = builder.Build();
@@ -25,9 +23,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseCors();
-
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 
