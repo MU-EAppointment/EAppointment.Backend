@@ -9,3 +9,8 @@ Content-Type: application/json
   "Password":"1"
 }
 ###
+GET {{EAppointment.WebAPI_HostAddress}}/api/doctors
+Accept: application/json
+{
+
+}
