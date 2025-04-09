@@ -1,6 +1,7 @@
 ﻿using EAppointment.Application.Commons.Results;
 using EAppointment.Application.Features.Auths.Commands.Login;
 using EAppointment.Application.Features.Auths.DTOs;
+using EAppointment.Application.Features.Doctors.Commands.Create;
 using EAppointment.Application.Features.Doctors.Queries.GetAll;
 using EAppointment.WebAPI.Abstractions;
 using Mediator;
@@ -14,6 +15,13 @@ namespace EAppointment.WebAPI.Controllers
         public async Task<IActionResult> GetAll([FromRoute]GetAllDoctorQueryRequest getAllDoctorQueryRequest, CancellationToken cancellationToken)
         {
             Result<List<Application.Features.Doctors.DTOs.GetAllDoctorDTO>> response = await _mediator.Send(getAllDoctorQueryRequest, cancellationToken);
+            return StatusCode((int)response.HttpStatusCode, response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] CreateDoctorCommandRequest createDoctorCommandRequest, CancellationToken cancellationToken)
+        {
+            Result<Application.Features.Doctors.DTOs.DoctorDTO> response = await _mediator.Send(createDoctorCommandRequest, cancellationToken);
             return StatusCode((int)response.HttpStatusCode, response);
         }
     }
