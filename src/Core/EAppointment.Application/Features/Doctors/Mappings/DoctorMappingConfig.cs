@@ -1,5 +1,7 @@
-﻿using EAppointment.Application.Features.Doctors.DTOs;
+﻿using EAppointment.Application.Features.Doctors.Commands.Create;
+using EAppointment.Application.Features.Doctors.DTOs;
 using EAppointment.Domain.Entities;
+using EAppointment.Domain.Enums;
 using Mapster;
 
 namespace EAppointment.Application.Features.Doctors.Mappings
@@ -10,6 +12,9 @@ namespace EAppointment.Application.Features.Doctors.Mappings
         {
             config.NewConfig<Doctor, GetAllDoctorDTO>()
                 .Map(dest => dest.Department, src => src.Department);
+
+            config.NewConfig<CreateDoctorCommandRequest, Doctor>()
+                .Map(dest => dest.Department, src => DepartmentEnum.FromValue(src.Department));
         }
     }
 }
