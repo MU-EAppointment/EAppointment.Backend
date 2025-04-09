@@ -2,6 +2,7 @@ using EAppointment.Application;
 using EAppointment.Infrastructure;
 using EAppointment.Persistence;
 using EAppointment.WebAPI.SeedData;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();

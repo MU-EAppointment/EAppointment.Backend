@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EAppointment.Application.Features.Doctors.Queries.GetAll
 {
-    public readonly record struct GetAllDoctorQueryRequest(int page) : IRequest<Result<List<GetAllDoctorDTO>>>;
+    public sealed record GetAllDoctorQueryRequest() : IRequest<Result<List<GetAllDoctorDTO>>>;
 
     internal sealed class GetAllDoctorQueryHandler(IQueryRepository<Doctor> _doctorQueryRepository) : IRequestHandler<GetAllDoctorQueryRequest, Result<List<GetAllDoctorDTO>>>
     {

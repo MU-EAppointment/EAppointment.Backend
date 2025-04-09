@@ -11,7 +11,7 @@ namespace EAppointment.WebAPI.Controllers
     public sealed class DoctorsController(IMediator _mediator) : ApiController(_mediator)
     {
         [HttpGet]
-        public async Task<IActionResult> GetAll(GetAllDoctorQueryRequest getAllDoctorQueryRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAll([FromRoute]GetAllDoctorQueryRequest getAllDoctorQueryRequest, CancellationToken cancellationToken)
         {
             Result<List<Application.Features.Doctors.DTOs.GetAllDoctorDTO>> response = await _mediator.Send(getAllDoctorQueryRequest, cancellationToken);
             return StatusCode((int)response.HttpStatusCode, response);
